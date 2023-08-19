@@ -1,0 +1,18 @@
+# IntelliJ IDEA
+.idea/
+
+# Gradle
+build/
+.gradle/
+gradle-wrapper.jar
+
+# Compiled class files
+bin/
+out/
+build/classes/
+build/test-classes/
+
+# Logs and logs directories
+*.log
+log/
+logs/
