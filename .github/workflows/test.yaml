@@ -11,5 +11,6 @@ jobs:
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
+          node-version: '16'
       - uses: Xotabu4/selenoid-github-action@v2
       - run: ./gradlew clean test
