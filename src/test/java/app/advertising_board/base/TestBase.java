@@ -11,7 +11,7 @@ public class TestBase {
     public HomePage homePage = new HomePage();
 
     @BeforeEach
-    public static void beforeAll(){
+    public void beforeAll(){
         Configuration.baseUrl = ConfigLoader.getInstance().getBaseUrl();
         Configuration.startMaximized = Boolean.parseBoolean(ConfigLoader.getInstance().getstartMaximized());
         Configuration.browser = ConfigLoader.getInstance().getbrowser();
