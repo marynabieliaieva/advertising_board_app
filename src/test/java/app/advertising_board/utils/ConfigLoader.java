@@ -1,7 +1,5 @@
 package app.advertising_board.utils;
 
-import app.advertising_board.constants.Environments;
-
 import java.util.Properties;
 
 public class ConfigLoader {
@@ -11,9 +9,9 @@ public class ConfigLoader {
     private ConfigLoader(){
         //String env = System.getProperty("env", String.valueOf(Environments.TEST));
         String env = System.getProperty("ENV");
-        switch (Environments.valueOf(env)){
-            case STAGE -> properties = PropertyUtils.propertyLoader("src/test/resources/stage_config.properties");
-            case TEST -> properties = PropertyUtils.propertyLoader("src/test/resources/test_config.properties");
+        switch (env){
+            case "STAGE" -> properties = PropertyUtils.propertyLoader("src/test/resources/stage_config.properties");
+            case "TEST" -> properties = PropertyUtils.propertyLoader("src/test/resources/test_config.properties");
             default -> throw new IllegalStateException("Invalid environment type: " + env);
         }
     }
