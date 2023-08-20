@@ -5,11 +5,12 @@ import app.advertising_board.utils.ConfigLoader;
 import com.codeborne.selenide.Configuration;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 public class TestBase {
     public HomePage homePage = new HomePage();
 
-    @BeforeAll
+    @BeforeEach
     public static void beforeAll(){
         Configuration.baseUrl = ConfigLoader.getInstance().getBaseUrl();
         Configuration.startMaximized = Boolean.parseBoolean(ConfigLoader.getInstance().getstartMaximized());

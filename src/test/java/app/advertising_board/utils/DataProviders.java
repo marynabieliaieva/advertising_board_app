@@ -9,7 +9,7 @@ public class DataProviders {
         return Stream.of(
                 Arguments.of(ConfigLoader.getInstance().getIncorrectUserName(), ConfigLoader.getInstance().getIncorrectPassword()),
                 Arguments.of(ConfigLoader.getInstance().getUserName(), ConfigLoader.getInstance().getIncorrectPassword()),
-                Arguments.of(ConfigLoader.getInstance().getIncorrectUserName(), ConfigLoader.getInstance().getPassword())
+                Arguments.of(ConfigLoader.getInstance().getIncorrectUserName(), System.getProperty("PASSWORD"))
         );
     }
 }

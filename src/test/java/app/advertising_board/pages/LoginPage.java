@@ -26,6 +26,7 @@ public class LoginPage extends BasePage {
     @Step("Set Password {password}")
     public LoginPage setValidPassword(){
         String password = System.getProperty("PASSWORD");
+        System.out.println("Password is: " + password);
         passwordField.setValue(password);
         return this;
     }

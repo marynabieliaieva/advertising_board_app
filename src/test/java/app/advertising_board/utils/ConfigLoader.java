@@ -35,7 +35,7 @@ public class ConfigLoader {
     }
 
     public String getPassword(){
-        String password = properties.getProperty("password");
+        String password = properties.getProperty("PASSWORD");
         if(password != null) return password;
         else throw new RuntimeException("Property password is not specified on the config.property file.");
     }
