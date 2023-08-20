@@ -4,8 +4,11 @@ import app.advertising_board.pages.HomePage;
 import app.advertising_board.utils.ConfigLoader;
 import com.codeborne.selenide.Configuration;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
     public HomePage homePage = new HomePage();
@@ -17,4 +20,10 @@ public class TestBase {
         Configuration.browser = ConfigLoader.getInstance().getbrowser();
         Configuration.timeout = Long.parseLong(ConfigLoader.getInstance().getTimeout());
     }
+
+    @AfterEach
+    public void afterEach(){
+        closeWebDriver();
+    }
+
 }
