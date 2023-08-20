@@ -48,6 +48,7 @@ task regression_test(type: Test) {
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     testLogging {
         lifecycle {
             events "passed", "skipped", "failed"

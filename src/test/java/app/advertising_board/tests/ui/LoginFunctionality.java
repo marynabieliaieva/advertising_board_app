@@ -31,7 +31,6 @@ public class LoginFunctionality extends TestBase {
                 .verifyUserLogged();
     }
 
-    //TODO Implement test with Data Driven
     @MethodSource("app.advertising_board.utils.DataProviders#credentialsDataProvider")
     @ParameterizedTest (name = "Verify that user is not able to login with invalid credentials: {0} and {1}")
     public void loginWithInvalidCredentials(String userName, String password) throws IOException {
