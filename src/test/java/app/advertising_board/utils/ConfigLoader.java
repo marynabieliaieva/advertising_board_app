@@ -7,7 +7,7 @@ public class ConfigLoader {
     private static ConfigLoader configLoader;
 
     private ConfigLoader(){
-        String env = System.getProperty("ENV");
+        String env = System.getProperty("ENV", "TEST");
         switch (env){
             case "STAGE" -> properties = PropertyUtils.propertyLoader("src/test/resources/stage_config.properties");
             case "TEST" -> properties = PropertyUtils.propertyLoader("src/test/resources/test_config.properties");
