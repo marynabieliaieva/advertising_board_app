@@ -6,6 +6,7 @@ import app.advertising_board.utils.ConfigLoader;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
+@Tag("regression")
 public class AdCreation extends TestBase {
     @Test
     @DisplayName("Verify that user is able to add new ad")

@@ -31,8 +31,6 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
 
-
-
 test {
     useJUnitPlatform()
     systemProperty "chromeoptions.prefs", "intl.accept_languages=us"
@@ -42,6 +40,21 @@ version = '1.0-SNAPSHOT'
 description = 'advertising_board_app'
 java.sourceCompatibility = JavaVersion.VERSION_14
 targetCompatibility = JavaVersion.VERSION_14
+
+task regression_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("regression")
+    }
+}
+
+tasks.withType(Test) {
+    testLogging {
+        lifecycle {
+            events "passed", "skipped", "failed"
+            exceptionFormat "short"
+        }
+    }
+}
 
 allure{
     report{
