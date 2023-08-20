@@ -15,19 +15,21 @@ public class LoginPage extends BasePage {
     loginConfirmButton = $(By.xpath("//button[text()='Login']")),
     loginErrorMessage = $(By.xpath("//div[@class='auth-block-right']//*[text()='Invalid username and/or password!']"));
 
-
-
     @Step("Set User Name {userName}")
-    public LoginPage setUserName(String userName){
-        userNameField.setValue(userName);
+    public LoginPage setUserName(){
+        userNameField.setValue(System.getProperty("USERNAME"));
         return this;
     }
 
-    @Step("Set Password {password}")
+    @Step("Set User Name {userName}")
+    public LoginPage setInvalidUserName(String incorrectUserName){
+        userNameField.setValue(incorrectUserName);
+        return this;
+    }
+
+    @Step("Set Password}")
     public LoginPage setValidPassword(){
-        String password = System.getProperty("PASSWORD");
-        System.out.println("Password is: " + password);
-        passwordField.setValue(password);
+        passwordField.setValue(System.getProperty("PASSWORD"));
         return this;
     }
 
@@ -44,8 +46,8 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Login With Valid Credentials {ConfigLoader.getInstance().getUserName()}")
-    public HomePage loginWithValidCredentials(String userName){
-        setUserName(userName);
+    public HomePage loginWithValidCredentials(){
+        setUserName();
         setValidPassword();
         confirmLogin();
         return new HomePage();
@@ -53,7 +55,7 @@ public class LoginPage extends BasePage {
 
     @Step("Login With Valid Credentials {ConfigLoader.getInstance().incorrectUserName()}")
     public LoginPage loginWithInValidCredentials(String userName, String password){
-        setUserName(userName);
+        setInvalidUserName(userName);
         setInvalidPassword(password);
         confirmLogin();
         return this;

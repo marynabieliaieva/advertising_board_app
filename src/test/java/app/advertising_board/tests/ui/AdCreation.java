@@ -24,7 +24,7 @@ public class AdCreation extends TestBase {
             open(ConfigLoader.getInstance().getBaseUrl());
         });
         homePage.clickLoginButton()
-                .loginWithValidCredentials(ConfigLoader.getInstance().getUserName())
+                .loginWithValidCredentials()
                 .verifyUserLogged()
                 .closeCookiesWindow()
                 .createNewAd()
