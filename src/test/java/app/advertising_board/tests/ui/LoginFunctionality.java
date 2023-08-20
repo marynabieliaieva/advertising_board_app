@@ -27,7 +27,7 @@ public class LoginFunctionality extends TestBase {
         });
 
         homePage.clickLoginButton()
-                .loginWithValidCredentials(ConfigLoader.getInstance().getUserName(), ConfigLoader.getInstance().getPassword())
+                .loginWithValidCredentials(ConfigLoader.getInstance().getUserName())
                 .verifyUserLogged();
     }
 

@@ -1,12 +1,11 @@
 package app.advertising_board.pages;
 
 import app.advertising_board.base.BasePage;
-import app.advertising_board.utils.ConfigLoader;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.assertj.core.api.SoftAssertions;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage {
@@ -16,6 +15,8 @@ public class LoginPage extends BasePage {
     loginConfirmButton = $(By.xpath("//button[text()='Login']")),
     loginErrorMessage = $(By.xpath("//div[@class='auth-block-right']//*[text()='Invalid username and/or password!']"));
 
+
+
     @Step("Set User Name {userName}")
     public LoginPage setUserName(String userName){
         userNameField.setValue(userName);
@@ -23,7 +24,14 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Set Password {password}")
-    public LoginPage setPassword(String password){
+    public LoginPage setValidPassword(){
+        String password = System.getProperty("PASSWORD");
+        passwordField.setValue(password);
+        return this;
+    }
+
+    @Step("Set Password {password}")
+    public LoginPage setInvalidPassword(String password){
         passwordField.setValue(password);
         return this;
     }
@@ -35,9 +43,9 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Login With Valid Credentials {ConfigLoader.getInstance().getUserName()}")
-    public HomePage loginWithValidCredentials(String userName, String password){
+    public HomePage loginWithValidCredentials(String userName){
         setUserName(userName);
-        setPassword(password);
+        setValidPassword();
         confirmLogin();
         return new HomePage();
     }
@@ -45,7 +53,7 @@ public class LoginPage extends BasePage {
     @Step("Login With Valid Credentials {ConfigLoader.getInstance().incorrectUserName()}")
     public LoginPage loginWithInValidCredentials(String userName, String password){
         setUserName(userName);
-        setPassword(password);
+        setInvalidPassword(password);
         confirmLogin();
         return this;
     }
