@@ -16,16 +16,19 @@ public class LoginPage extends BasePage {
     loginConfirmButton = $(By.xpath("//button[text()='Login']")),
     loginErrorMessage = $(By.xpath("//div[@class='auth-block-right']//*[text()='Invalid username and/or password!']"));
 
+    @Step("Set User Name {userName}")
     public LoginPage setUserName(String userName){
         userNameField.setValue(userName);
         return this;
     }
 
+    @Step("Set Password {password}")
     public LoginPage setPassword(String password){
         passwordField.setValue(password);
         return this;
     }
 
+    @Step("Click Login Button")
     public LoginPage confirmLogin(){
         loginConfirmButton.click();
         return this;
@@ -46,6 +49,8 @@ public class LoginPage extends BasePage {
         confirmLogin();
         return this;
     }
+
+    @Step("Verify That User Is Not Logged")
     public LoginPage verifyUserIsNotLogged() {
         softAssertions.assertThat(loginErrorMessage.is(Condition.visible))
                 .as("User avatar icon should be visible")
@@ -58,5 +63,4 @@ public class LoginPage extends BasePage {
                 .isTrue();
         return this;
     }
-
 }

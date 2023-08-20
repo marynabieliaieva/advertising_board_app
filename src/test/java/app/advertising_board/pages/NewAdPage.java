@@ -10,6 +10,7 @@ import app.advertising_board.utils.RandomUtils;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.checkerframework.common.reflection.qual.GetClass;
 import org.openqa.selenium.By;
 
@@ -44,6 +45,7 @@ public class NewAdPage extends BasePage {
     public NewAdPage() throws IOException {
     }
 
+    @Step("Set Value for Ad Category")
     public NewAdPage setRandomValueOf(CategoryType categoryType){
         List<String> categoryNamesList;
         if (categoryType == CategoryType.CATEGORY) {
@@ -57,48 +59,57 @@ public class NewAdPage extends BasePage {
         return this;
     }
 
+    @Step("Verify That Category is Selected")
     public NewAdPage verifyCategorySelected(){
         $(subcategoryHeader).shouldBe(Condition.visible);
         return this;
     }
 
+    @Step("Verify That SubCategory is Selected")
     public NewAdPage verifySubCategorySelected(){
         $$(createAdElements).get(0).shouldBe(Condition.visible);
         return this;
     }
 
+    @Step("Set Ad Description")
     public NewAdPage setAdDescription(String description){
         descriptionTextField.setValue(description);
         return this;
     }
 
+    @Step("Set Ad Title")
     public NewAdPage setAdTitle(String title){
         nameTextField.setValue(title);
         return this;
     }
 
+    @Step("Upload Ad Image")
     public NewAdPage UploadFile(){
         File file = new File(JacksonUtils.class.getClassLoader().getResource(adData.getFileName()).getPath());
         photoUpload.uploadFile(file);
         return this;
     }
 
+    @Step("Set Ad City")
     public NewAdPage setAdCity(String city){
         cityTextField.setValue(city);
         citySelectedValueConfirmation.click();
         return this;
     }
 
+    @Step("Set Ad Address")
     public NewAdPage setAdAddress(String address){
         addressTextField.setValue(address);
         return this;
     }
 
+    @Step("Submit New Ad")
     public ExistingAdPage submitNewAdd(){
         publishAdButton.click();
         return new ExistingAdPage();
     }
 
+    @Step("Create Real Estate Ad")
     public ExistingAdPage createRealEstateAd(){
         setAdDescription(adData.getDescription());
         selectBoxForm.fillOutSelectBoxes(createAdFormSelectBoxes);

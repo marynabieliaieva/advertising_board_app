@@ -26,6 +26,7 @@ public class HomePage extends BasePage {
         return new LoginPage();
     }
 
+    @Step("Verify That User Is Logged")
     public HomePage verifyUserLogged(){
 
         SoftAssertions softly = new SoftAssertions();
@@ -45,12 +46,14 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    @Step("Close Cookies Window")
     public HomePage closeCookiesWindow(){
         cookiesCloseButton.click();
         cookiesCloseButton.shouldNotBe(Condition.visible);
         return this;
     }
 
+    @Step("Create New Ad")
     public NewAdPage createNewAd() throws IOException {
         createNewAdButton.click();
         return new NewAdPage();
